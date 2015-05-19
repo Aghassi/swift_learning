@@ -33,7 +33,9 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     //Returns the contents of each row.
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        //Best paractice
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        
         var (courseTitle, courseAuthor) = devCourses[indexPath.row]
         cell.textLabel?.text = courseTitle
         return cell
