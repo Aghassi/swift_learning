@@ -23,12 +23,29 @@ class ViewController: UIViewController, UITableViewDataSource {
         ("Up and Running with Ubuntu Desktop Linux","Scott Simpson"),
         ("Up and Running with C","Dan Gookin") ]
     
+    let webCourses = [
+        ("HTML Essential Training","James Williamson"),
+        ("Building a Responsive Single-Page Design","Ray Villalobos"),
+        ("Muse Essential Training","Justin Seeley"),
+        ("WordPress Essential Training","Morten Rand-Hendriksen"),
+        ("Installing and Running Joomla! 3: Local and Web-Hosted Sites","Jen Kramer"),
+        ("Managing Records in SharePoint","Toni Saddler-French"),
+        ("Design the Web: SVG Rollovers with CSS","Chris Converse"),
+        ("Up and Running with Ember.js","Kai Gittens"),
+        ("HTML5 Game Development with Phaser","Joseph Labrecque"),
+        ("Responsive Media","Christopher Schmitt") ]
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
+        return 2;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return devCourses.count;
+        if (section == 0) {
+            return devCourses.count
+        }
+        else {
+            return webCourses.count
+        }
     }
     
     //Returns the contents of each row.
@@ -36,10 +53,34 @@ class ViewController: UIViewController, UITableViewDataSource {
         //Best paractice
         var cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
-        var (courseTitle, courseAuthor) = devCourses[indexPath.row]
-        cell.textLabel?.text = courseTitle
+        if (indexPath == 0) {
+            let (courseTitle, courseAuthor) = devCourses[indexPath.row]
+            cell.textLabel?.text = courseTitle
+            cell.detailTextLabel?.text = courseAuthor
+        }
+        else {
+            let (courseTitle, courseAuthor) = devCourses[indexPath.row]
+            cell.textLabel?.text = courseTitle
+            cell.detailTextLabel?.text = courseAuthor
+        }
+
+        //Retrieve an image
+        var image = UIImage(named: "Star")  //Name from images.xcassets, case sensitive
+        cell.imageView?.image = image
+        
         return cell
     }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (section == 0) {
+            return "Developer Courses"
+        }
+        else {
+            return "Web Courses"
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
