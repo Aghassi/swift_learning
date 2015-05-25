@@ -7,13 +7,13 @@
         <!--Photos-->
         <scene sceneID="iPc-Bk-SBd">
             <objects>
-                <tableViewController id="kd5-nY-tsI" sceneMemberID="viewController">
+                <tableViewController id="kd5-nY-tsI" customClass="PhotosTableViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mDI-xa-JW5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="khW-5Y-SWq">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" id="khW-5Y-SWq">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="khW-5Y-SWq" id="Rpd-ef-TZw">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -34,10 +34,10 @@
             </objects>
             <point key="canvasLocation" x="1247" y="412"/>
         </scene>
-        <!--View Controller-->
+        <!--Display View Controller-->
         <scene sceneID="cLC-Ep-kfR">
             <objects>
-                <viewController id="TQ9-4k-KmM" sceneMemberID="viewController">
+                <viewController id="TQ9-4k-KmM" customClass="DisplayViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zwg-qg-W4z"/>
                         <viewControllerLayoutGuide type="bottom" id="vkL-in-8iW"/>
@@ -71,15 +71,18 @@
                             <constraint firstItem="QN6-Mk-f5m" firstAttribute="trailing" secondItem="Hjx-CK-del" secondAttribute="trailing" id="yWW-0J-pJg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentImage" destination="Hjx-CK-del" id="czx-sc-x0M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zv2-NP-HPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912" y="412"/>
         </scene>
-        <!--View Controller-->
+        <!--Info View Controller-->
         <scene sceneID="Qts-2G-rOz">
             <objects>
-                <viewController id="dFF-b9-F5l" sceneMemberID="viewController">
+                <viewController id="dFF-b9-F5l" customClass="InfoViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o0w-ZK-W0e"/>
                         <viewControllerLayoutGuide type="bottom" id="8q4-kb-Dlg"/>
@@ -95,15 +98,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-E0-IaR">
-                                <rect key="frame" x="16" y="535" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="16" y="535" width="30" height="30"/>
+                                <state key="normal" title="OK">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="DISMISS:" destination="dFF-b9-F5l" eventType="touchUpInside" id="OnF-BG-9Ph"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="detailsLabel" destination="uFe-JW-LC3" id="PGl-Wi-Cis"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfg-N5-ZwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
